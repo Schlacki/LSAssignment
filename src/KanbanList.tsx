@@ -32,21 +32,29 @@ export function KanbanList(props: {
   const [term, setTerm] = useState('');
   const [title, setTitle] = useState(props.list.title);
 
+  // manages Adding new Item to the list
   const onAdd = (): void => {
     const value = term;
     props.onAdd(props.list.id, value);
   };
 
+  // manages deleting Item from List
   const onDelete = (itemId: string): void => {
     props.onDelete(itemId, props.list.id);
   };
+
+  // manages status of item (completed/not completed)
   const handleChecked = (itemId: string) => {
     props.handleChecked(itemId);
   };
+
+  // manages changing the Title of the List
   const onListTitleChange = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     props.setTitle(title, props.list.id);
   };
+
+  // manages changing the content of a Item
   const setItemContent = (content: string, itemId: string) => {
     props.setItemContent(content, itemId);
   };

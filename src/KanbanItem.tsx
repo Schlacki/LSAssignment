@@ -20,12 +20,18 @@ export function KanbanItem(props: {
   setItemContent: (title: string, itemId: string) => void;
 }) {
   const [title, setTitle] = useState(props.item.content);
+
+  // manages deleting the item
   const onDelete = (): void => {
     props.onDelete(props.item.id);
   };
+
+  //manages updating the status of the item (completed/not completed)
   const handleChecked = (): void => {
     props.handleChecked(props.item.id);
   };
+
+  // manages changing the content of the item
   const onItemContentChange = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     props.setItemContent(title, props.item.id);
