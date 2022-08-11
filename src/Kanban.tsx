@@ -21,7 +21,7 @@ export class Kanban extends React.Component {
     this.fetch();
   }
 
-  // manages the Drag and saves the Result.
+  // manages the Drag and saves the Result in State + updates json-server
   onDragEnd = (result: DropResult): void => {
     const { destination, source, draggableId, type } = result;
     if (!destination) {
