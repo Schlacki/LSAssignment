@@ -36,7 +36,8 @@ For drag and drop you shall use `react-beautiful-dnd` ([https://github.com/atlas
 
 ## Getting Started:
 
-First go to the project root and run `yarn` and `yarn start`.
+First go to the project root and run `yarn` and then `yarn start-json ` and `yarn start`.
+This runs the json-server on port 3004, and the development server on port 3000
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -54,7 +55,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `yarn json`
+### `yarn start-json`
 
 Launches json-server running on port 3004
 
