@@ -29,7 +29,7 @@ For drag and drop you shall use `react-beautiful-dnd` ([https://github.com/atlas
 ## Not required
 
 - Deleting a Card is NOT required => finished
-- Changing Card or Column title is NOT required
+- Changing Card or Column title is NOT required => finished
 - Showing images is a nice to have but is not required
 
 <br/>
