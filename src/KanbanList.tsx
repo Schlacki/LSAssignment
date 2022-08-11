@@ -20,6 +20,7 @@ export interface Item {
 
 export function KanbanList(props: {
   onAdd: (id: string, content: string) => void;
+  onDelete: (itemId: string, listId: string) => void;
   list: List;
   items: Item[];
   index: number;
@@ -32,6 +33,9 @@ export function KanbanList(props: {
     props.onAdd(props.list.id, value);
   };
 
+  const onDelete = (itemId: string): void => {
+    props.onDelete(itemId, props.list.id);
+  };
   return (
     <Draggable draggableId={props.list.id} index={props.index}>
       {(provided: DraggableProvided) => (
@@ -59,7 +63,12 @@ export function KanbanList(props: {
                 >
                   {props.items.map((item: Item, index) => {
                     return (
-                      <KanbanItem key={item.id} item={item} index={index} />
+                      <KanbanItem
+                        key={item.id}
+                        item={item}
+                        index={index}
+                        onDelete={onDelete}
+                      />
                     );
                   })}
                   {provided.placeholder}

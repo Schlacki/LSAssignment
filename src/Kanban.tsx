@@ -95,18 +95,30 @@ export class Kanban extends React.Component {
   };
 
   addItem = (id: string, content: string): void => {
-    const Id = content + this.state.items.length.toString();
+    const uid: string =
+      Date.now().toString(36) + Math.random().toString(36).substr(2);
     const newItem = {
-      id: Id,
+      id: uid,
       content: content,
     };
     const newItems = [...this.state.items, newItem];
-
     const List: List = this.state.lists[id];
     const Items = List.itemIds;
-    Items.push(Id);
+    Items.push(uid);
     const newLists = { ...this.state.lists };
     const newState = { ...this.state, lists: newLists, items: newItems };
+    this.setState(newState);
+    this.save(newState);
+  };
+
+  onDelete = (itemId: string, listId: string): void => {
+    const newState: Data = { ...this.state };
+    const itemsIndex = newState.items.findIndex((item) => item.id === itemId);
+    newState.items.splice(itemsIndex, 1);
+    const listsIndex = newState.lists[listId].itemIds.findIndex(
+      (item: string) => item === itemId
+    );
+    newState.lists[listId].itemIds.splice(listsIndex, 1);
     this.setState(newState);
     this.save(newState);
   };
@@ -124,7 +136,6 @@ export class Kanban extends React.Component {
                 {this.state.listOrder.map((listId, index) => {
                   const list: List = this.state.lists[listId];
                   const items: Item[] = list.itemIds.map(
-                    // (itemId: string) => this.state.items[parseInt(itemId)]
                     (itemId: string) =>
                       this.state.items[
                         this.state.items.findIndex((item) => item.id === itemId)
@@ -138,6 +149,7 @@ export class Kanban extends React.Component {
                       items={items}
                       index={index}
                       onAdd={this.addItem}
+                      onDelete={this.onDelete}
                     />
                   );
                 })}
