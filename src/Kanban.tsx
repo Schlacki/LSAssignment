@@ -99,7 +99,7 @@ export class Kanban extends React.Component {
 
   // manages adding Item to a List
   addItem = (id: string, content: string): void => {
-    // generates random Id for the added Item
+    // generates random 20-Sign Id for the added Item
     const uid: string =
       Date.now().toString(36) + Math.random().toString(36).substr(2);
     const newItem = {
@@ -144,6 +144,15 @@ export class Kanban extends React.Component {
     this.save(newState);
   };
 
+  setTitle = (title: string, id: string) => {
+    const newList: List = { ...this.state.lists[id] };
+    newList.title = title;
+    const newLists = { ...this.state.lists };
+    newLists[id] = newList;
+    const newState: Data = { ...this.state, lists: newLists };
+    this.setState(newState);
+    this.save(newState);
+  };
   render() {
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
@@ -173,6 +182,7 @@ export class Kanban extends React.Component {
                       onAdd={this.addItem}
                       onDelete={this.onDelete}
                       handleChecked={this.handleChecked}
+                      setTitle={this.setTitle}
                     />
                   );
                 })}

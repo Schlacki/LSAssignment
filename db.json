@@ -3,11 +3,6 @@
     {
       "items": [
         {
-          "id": "0",
-          "content": "Item 1",
-          "completed": false
-        },
-        {
           "id": "1",
           "content": "Item 2",
           "completed": false
@@ -46,42 +41,31 @@
           "id": "l6owkrtr2hc59874ojm",
           "content": "item 6",
           "completed": false
+        },
+        {
+          "id": "l6p0zqww37u55jqz5i5",
+          "content": "item 1",
+          "completed": false
         }
       ],
       "lists": {
         "list-1": {
           "id": "list-1",
-          "title": "Column-1",
-          "itemIds": [
-            "1",
-            "0",
-            "l6owkjd08ofy8xbj6t8"
-          ]
+          "title": "List 1",
+          "itemIds": ["l6p0zqww37u55jqz5i5", "1", "l6owkjd08ofy8xbj6t8"]
         },
         "list-2": {
           "id": "list-2",
-          "title": "Column-2",
-          "itemIds": [
-            "3",
-            "4",
-            "l6owkrtr2hc59874ojm"
-          ]
+          "title": "List 2",
+          "itemIds": ["3", "4", "l6owkrtr2hc59874ojm"]
         },
         "list-3": {
           "id": "list-3",
-          "title": "Column-3",
-          "itemIds": [
-            "6",
-            "7",
-            "8"
-          ]
+          "title": "List 3",
+          "itemIds": ["6", "7", "8"]
         }
       },
-      "listOrder": [
-        "list-1",
-        "list-2",
-        "list-3"
-      ],
+      "listOrder": ["list-1", "list-2", "list-3"],
       "id": 1
     }
   ]

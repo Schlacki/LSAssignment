@@ -5,6 +5,8 @@ import {
   Stack,
   Typography,
   TextField,
+  InputBase,
+  Input,
 } from '@mui/material';
 import React, { useState } from 'react';
 import { Droppable, Draggable, DraggableProvided } from 'react-beautiful-dnd';
@@ -22,15 +24,16 @@ export function KanbanList(props: {
   onAdd: (id: string, content: string) => void;
   onDelete: (itemId: string, listId: string) => void;
   handleChecked: (itemId: string) => void;
+  setTitle: (title: string, id: string) => void;
   list: List;
   items: Item[];
   index: number;
 }) {
   const [term, setTerm] = useState('');
+  const [title, setTitle] = useState(props.list.title);
 
   const onAdd = (): void => {
     const value = term;
-    console.log(value);
     props.onAdd(props.list.id, value);
   };
 
@@ -40,6 +43,10 @@ export function KanbanList(props: {
   const handleChecked = (itemId: string) => {
     props.handleChecked(itemId);
   };
+  const onListTitleChange = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    props.setTitle(title, props.list.id);
+  };
   return (
     <Draggable draggableId={props.list.id} index={props.index}>
       {(provided: DraggableProvided) => (
@@ -48,14 +55,21 @@ export function KanbanList(props: {
           sx={{ bgcolor: 'grey.200', width: 400 }}
           {...provided.draggableProps}
           ref={provided.innerRef}
+          {...provided.dragHandleProps}
         >
           <CardContent>
-            <Typography
-              variant="h5"
-              component="div"
-              {...provided.dragHandleProps}
-            >
-              {props.list.title}
+            <Typography variant="h5" component="div">
+              <form onSubmit={onListTitleChange}>
+                <InputBase
+                  onBlur={onListTitleChange}
+                  spellCheck="false"
+                  size="medium"
+                  color="primary"
+                  value={title}
+                  onChange={(event) => setTitle(event.target.value)}
+                  sx={{ fontSize: 25, fontWeight: 'medium' }}
+                />
+              </form>
             </Typography>
 
             <br></br>
@@ -84,14 +98,17 @@ export function KanbanList(props: {
             <br></br>
             <Stack spacing={2}>
               <TextField
-                id="outlined-basic"
+                id="outlined-multiline-flexible"
                 variant="outlined"
+                multiline
+                maxRows={4}
                 label="New Item"
                 onChange={(event) => setTerm(event.target.value)}
               />
-              <Button size="small" onClick={onAdd}>
+              <Button size="medium" onClick={onAdd}>
                 Add Item
               </Button>
+              <br></br>
             </Stack>
           </CardContent>
         </Card>
