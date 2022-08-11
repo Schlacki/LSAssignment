@@ -1,6 +1,7 @@
 # Learningsuite Frontend Assignment
 
 ## Assignment instructions
+
 Your Assignment is to build a Kanban-Board, like in Trello where the user is able to drag and drop cards between lists (columns).
 
 This is a great UI example built in React & Material UI: [https://minimals.cc/dashboard/kanban](https://minimals.cc/dashboard/kanban)
@@ -16,6 +17,7 @@ For drag and drop you shall use `react-beautiful-dnd` ([https://github.com/atlas
 <br/>
 
 ## Requirements
+
 - Drag and drop (DND) is a must have
 - Add a new Card to a column
 - Drag a card to another column
@@ -25,6 +27,7 @@ For drag and drop you shall use `react-beautiful-dnd` ([https://github.com/atlas
 <br/>
 
 ## Not required
+
 - Deleting a Card is NOT required
 - Changing Card or Column title is NOT required
 - Showing images is a nice to have but is not required
@@ -38,6 +41,7 @@ First go to the project root and run `yarn` and `yarn start`.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 # Repo documentation
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -49,6 +53,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `yarn json`
+
+Launches json-server running on port 3004
 
 ### `yarn test`
 

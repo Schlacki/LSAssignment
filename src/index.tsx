@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   // <React.StrictMode> // strict mode causes errors for DND
-    <App />
+  <App />
   // </React.StrictMode>
 );
 

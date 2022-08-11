@@ -1,10 +1,8 @@
 import React from 'react';
-import Kanban from "./Kanban";
+import Kanban from './Kanban';
 
 function App() {
-    return (
-        <Kanban/>
-    );
+  return <Kanban />;
 }
 
 export default App;
