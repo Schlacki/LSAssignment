@@ -18,8 +18,8 @@ For drag and drop you shall use `react-beautiful-dnd` ([https://github.com/atlas
 
 ## Requirements
 
-- Drag and drop (DND) is a must have => finishe
-- Add a new Card to a column => finisehd
+- Drag and drop (DND) is a must have => finished
+- Add a new Card to a column => finished
 - Drag a card to another column => finished
 - Sorting cards via DND should also work => finished
 - Structure the current state of the columns and cards so that the state is serializable as JSON (storing and loading is not required) => finished + storing and loading
