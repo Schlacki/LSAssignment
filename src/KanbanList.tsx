@@ -6,7 +6,6 @@ import {
   Typography,
   TextField,
   InputBase,
-  Input,
 } from '@mui/material';
 import React, { useState } from 'react';
 import { Droppable, Draggable, DraggableProvided } from 'react-beautiful-dnd';
@@ -25,6 +24,7 @@ export function KanbanList(props: {
   onDelete: (itemId: string, listId: string) => void;
   handleChecked: (itemId: string) => void;
   setTitle: (title: string, id: string) => void;
+  setItemContent: (content: string, itemId: string) => void;
   list: List;
   items: Item[];
   index: number;
@@ -46,6 +46,9 @@ export function KanbanList(props: {
   const onListTitleChange = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     props.setTitle(title, props.list.id);
+  };
+  const setItemContent = (content: string, itemId: string) => {
+    props.setItemContent(content, itemId);
   };
   return (
     <Draggable draggableId={props.list.id} index={props.index}>
@@ -88,6 +91,7 @@ export function KanbanList(props: {
                         index={index}
                         onDelete={onDelete}
                         handleChecked={handleChecked}
+                        setItemContent={setItemContent}
                       />
                     );
                   })}
@@ -108,7 +112,6 @@ export function KanbanList(props: {
               <Button size="medium" onClick={onAdd}>
                 Add Item
               </Button>
-              <br></br>
             </Stack>
           </CardContent>
         </Card>

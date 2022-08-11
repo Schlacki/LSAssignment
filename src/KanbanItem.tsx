@@ -5,9 +5,10 @@ import {
   Checkbox,
   Typography,
   IconButton,
+  InputBase,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import React from 'react';
+import React, { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { Item } from './KanbanList';
 
@@ -16,12 +17,18 @@ export function KanbanItem(props: {
   index: number;
   onDelete: (itemId: string) => void;
   handleChecked: (itemId: string) => void;
+  setItemContent: (title: string, itemId: string) => void;
 }) {
+  const [title, setTitle] = useState(props.item.content);
   const onDelete = (): void => {
     props.onDelete(props.item.id);
   };
   const handleChecked = (): void => {
     props.handleChecked(props.item.id);
+  };
+  const onItemContentChange = (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+    props.setItemContent(title, props.item.id);
   };
   return (
     <Draggable draggableId={props.item.id} index={props.index}>
@@ -42,7 +49,21 @@ export function KanbanItem(props: {
                 onChange={handleChecked}
                 checked={props.item.completed}
               />
-              <Typography variant="h5">{props.item.content}</Typography>
+              <Typography variant="h5">
+                <form onSubmit={onItemContentChange}>
+                  <InputBase
+                    onBlur={onItemContentChange}
+                    spellCheck="false"
+                    size="medium"
+                    color="primary"
+                    value={title}
+                    onChange={(event: {
+                      target: { value: React.SetStateAction<string> };
+                    }) => setTitle(event.target.value)}
+                    sx={{ fontSize: 20, maxWidth: 150 }}
+                  />
+                </form>
+              </Typography>
               <IconButton aria-label="delete" onClick={onDelete}>
                 <DeleteIcon />
               </IconButton>

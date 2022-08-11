@@ -144,12 +144,25 @@ export class Kanban extends React.Component {
     this.save(newState);
   };
 
-  setTitle = (title: string, id: string) => {
+  // manages setting ColumntTitle
+  setTitle = (title: string, id: string): void => {
     const newList: List = { ...this.state.lists[id] };
     newList.title = title;
     const newLists = { ...this.state.lists };
     newLists[id] = newList;
     const newState: Data = { ...this.state, lists: newLists };
+    this.setState(newState);
+    this.save(newState);
+  };
+
+  // manages setting ItemContent
+  setItemContent = (content: string, itemId: string): void => {
+    const index = this.state.items.findIndex((item) => item.id === itemId);
+    const newItem = { ...this.state.items[index] };
+    newItem.content = content;
+    const newItems = [...this.state.items];
+    newItems[index] = newItem;
+    const newState = { ...this.state, items: newItems };
     this.setState(newState);
     this.save(newState);
   };
@@ -183,6 +196,7 @@ export class Kanban extends React.Component {
                       onDelete={this.onDelete}
                       handleChecked={this.handleChecked}
                       setTitle={this.setTitle}
+                      setItemContent={this.setItemContent}
                     />
                   );
                 })}
