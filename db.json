@@ -4,39 +4,48 @@
       "items": [
         {
           "id": "0",
-          "content": "Item 1"
+          "content": "Item 1",
+          "completed": false
         },
         {
           "id": "1",
-          "content": "Item 2"
+          "content": "Item 2",
+          "completed": false
         },
         {
           "id": "3",
-          "content": "Item 4"
+          "content": "Item 4",
+          "completed": false
         },
         {
           "id": "4",
-          "content": "Item 5"
+          "content": "Item 5",
+          "completed": false
         },
         {
           "id": "6",
-          "content": "Item 7"
+          "content": "Item 7",
+          "completed": false
         },
         {
           "id": "7",
-          "content": "Item 8"
+          "content": "Item 8",
+          "completed": false
         },
         {
           "id": "8",
-          "content": "Item 9"
+          "content": "Item 9",
+          "completed": false
         },
         {
           "id": "l6owkjd08ofy8xbj6t8",
-          "content": "item 3"
+          "content": "item 3",
+          "completed": false
         },
         {
           "id": "l6owkrtr2hc59874ojm",
-          "content": "item 6"
+          "content": "item 6",
+          "completed": false
         }
       ],
       "lists": {
@@ -44,8 +53,8 @@
           "id": "list-1",
           "title": "Column-1",
           "itemIds": [
-            "0",
             "1",
+            "0",
             "l6owkjd08ofy8xbj6t8"
           ]
         },

@@ -7,7 +7,6 @@ import {
   TextField,
 } from '@mui/material';
 import React, { useState } from 'react';
-// import './CSS/KanbanList.css';
 import { Droppable, Draggable, DraggableProvided } from 'react-beautiful-dnd';
 
 import { List } from './Kanban';
@@ -16,11 +15,13 @@ import { KanbanItem } from './KanbanItem';
 export interface Item {
   id: string;
   content: string;
+  completed: boolean;
 }
 
 export function KanbanList(props: {
   onAdd: (id: string, content: string) => void;
   onDelete: (itemId: string, listId: string) => void;
+  handleChecked: (itemId: string) => void;
   list: List;
   items: Item[];
   index: number;
@@ -35,6 +36,9 @@ export function KanbanList(props: {
 
   const onDelete = (itemId: string): void => {
     props.onDelete(itemId, props.list.id);
+  };
+  const handleChecked = (itemId: string) => {
+    props.handleChecked(itemId);
   };
   return (
     <Draggable draggableId={props.list.id} index={props.index}>
@@ -53,6 +57,7 @@ export function KanbanList(props: {
             >
               {props.list.title}
             </Typography>
+
             <br></br>
             <Droppable droppableId={props.list.id} type="item">
               {(provided) => (
@@ -68,6 +73,7 @@ export function KanbanList(props: {
                         item={item}
                         index={index}
                         onDelete={onDelete}
+                        handleChecked={handleChecked}
                       />
                     );
                   })}

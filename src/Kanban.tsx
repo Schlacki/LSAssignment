@@ -11,7 +11,7 @@ export interface List {
 }
 interface Data {
   id?: number;
-  items: { id: string; content: string }[];
+  items: { id: string; content: string; completed: boolean }[];
   lists: {};
   listOrder: string[];
 }
@@ -21,6 +21,7 @@ export class Kanban extends React.Component {
     this.fetch();
   }
 
+  // manages the Drag and saves the Result.
   onDragEnd = (result: DropResult): void => {
     const { destination, source, draggableId, type } = result;
     if (!destination) {
@@ -84,33 +85,39 @@ export class Kanban extends React.Component {
     this.save(newState);
   };
 
+  // fetches Data from json-server and sets it as state
   fetch = async () => {
     const response = await axios.get('http://localhost:3004/data/');
     console.log(response.data[0]);
     this.setState(response.data[0]);
   };
 
+  // saves actual state to json-server
   save = (Data: Data) => {
     return axios.put('http://localhost:3004/data/1', Data);
   };
 
+  // manages adding Item to a List
   addItem = (id: string, content: string): void => {
+    // generates random Id for the added Item
     const uid: string =
       Date.now().toString(36) + Math.random().toString(36).substr(2);
     const newItem = {
       id: uid,
       content: content,
+      completed: false,
     };
     const newItems = [...this.state.items, newItem];
     const List: List = this.state.lists[id];
     const Items = List.itemIds;
     Items.push(uid);
     const newLists = { ...this.state.lists };
-    const newState = { ...this.state, lists: newLists, items: newItems };
+    const newState: Data = { ...this.state, lists: newLists, items: newItems };
     this.setState(newState);
     this.save(newState);
   };
 
+  // manages deleting an Item from a List
   onDelete = (itemId: string, listId: string): void => {
     const newState: Data = { ...this.state };
     const itemsIndex = newState.items.findIndex((item) => item.id === itemId);
@@ -122,6 +129,21 @@ export class Kanban extends React.Component {
     this.setState(newState);
     this.save(newState);
   };
+
+  // manages the completed Status of an Item (Checkbox checked or not)
+  handleChecked = (itemId: string): void => {
+    console.log(itemId);
+    const newState: Data = { ...this.state };
+    const index = newState.items.findIndex((item) => item.id === itemId);
+    if (newState.items[index].completed) {
+      newState.items[index].completed = false;
+    } else if (!newState.items[index].completed) {
+      newState.items[index].completed = true;
+    }
+    this.setState(newState);
+    this.save(newState);
+  };
+
   render() {
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
@@ -150,6 +172,7 @@ export class Kanban extends React.Component {
                       index={index}
                       onAdd={this.addItem}
                       onDelete={this.onDelete}
+                      handleChecked={this.handleChecked}
                     />
                   );
                 })}
