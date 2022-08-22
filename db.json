@@ -10,17 +10,8 @@
         {
           "id": "4",
           "content": "Item 5",
-          "completed": false
-        },
-        {
-          "id": "6",
-          "content": "Item 7",
-          "completed": false
-        },
-        {
-          "id": "8",
-          "content": "Item 9",
-          "completed": false
+          "completed": false,
+          "imgSrc": "./Fotos/1256397.png"
         },
         {
           "id": "l6owkrtr2hc59874ojm",
@@ -46,6 +37,16 @@
           "id": "l74eijlvi6oe5ic2upr",
           "content": "Item 1",
           "completed": false
+        },
+        {
+          "id": "l74lbh3kw5n5yor21tq",
+          "content": "item 7",
+          "completed": false
+        },
+        {
+          "id": "l74lbjmdq7kgd8pxxy",
+          "content": "item 9",
+          "completed": false
         }
       ],
       "lists": {
@@ -62,9 +63,9 @@
           "id": "list-2",
           "title": "Done",
           "itemIds": [
-            "6",
+            "l74lbh3kw5n5yor21tq",
             "l74dllqlsqxfxnpbud",
-            "8"
+            "l74lbjmdq7kgd8pxxy"
           ]
         },
         "list-3": {

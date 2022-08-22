@@ -9,8 +9,9 @@ interface Props {
 const KanbanForm = (props:Props) => {
 
     const formik = useFormik({
-        initialValues: { content: '', rating: 3, date: new Date() },
+        initialValues: { content: '', file: "" },
         onSubmit: (values) => {
+            console.log(values.file)
             props.onAddItem(values.content);
             formik.resetForm();
         },
@@ -28,7 +29,10 @@ const KanbanForm = (props:Props) => {
                         onChange={formik.handleChange}
                         value={formik.values.content}
                     />
-                    <Button type="submit">Add Item</Button>
+                    {/*<div>*/}
+                    {/*<input type="file" id="file" name="file" onChange={formik.handleChange} value={formik.values.file}/>*/}
+                    {/*</div>*/}
+                        <Button type="submit">Add Item</Button>
                 </Stack>
                 </form>
         </div>

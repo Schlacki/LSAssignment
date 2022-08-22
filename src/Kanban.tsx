@@ -11,7 +11,7 @@ export interface List {
 }
 interface Data {
   id?: number;
-  items: { id: string; content: string; completed: boolean }[];
+  items: { id: string; content: string; completed: boolean; imgSrc?:string }[];
   lists: {};
   listOrder: string[];
 }

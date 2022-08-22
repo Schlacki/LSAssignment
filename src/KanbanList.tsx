@@ -13,6 +13,7 @@ import {KanbanItem} from './KanbanItem';
 import KanbanForm from "./KanbanForm";
 
 export interface Item {
+    imgSrc?:string;
     id: string;
     content: string;
     completed: boolean;
