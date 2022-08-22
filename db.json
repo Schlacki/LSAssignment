@@ -3,11 +3,6 @@
     {
       "items": [
         {
-          "id": "1",
-          "content": "Item 2",
-          "completed": false
-        },
-        {
           "id": "3",
           "content": "Item 4",
           "completed": false
@@ -23,18 +18,8 @@
           "completed": false
         },
         {
-          "id": "7",
-          "content": "Item 8",
-          "completed": false
-        },
-        {
           "id": "8",
           "content": "Item 9",
-          "completed": false
-        },
-        {
-          "id": "l6owkjd08ofy8xbj6t8",
-          "content": "item 3",
           "completed": false
         },
         {
@@ -43,29 +28,60 @@
           "completed": false
         },
         {
-          "id": "l6p0zqww37u55jqz5i5",
-          "content": "item 1",
+          "id": "l74bwuvruohstzvgu3i",
+          "content": "Item 3",
+          "completed": false
+        },
+        {
+          "id": "l74dllqlsqxfxnpbud",
+          "content": "item 8",
+          "completed": false
+        },
+        {
+          "id": "l74dlunes6inzahzvu8",
+          "content": "Item 2",
+          "completed": false
+        },
+        {
+          "id": "l74eijlvi6oe5ic2upr",
+          "content": "Item 1",
           "completed": false
         }
       ],
       "lists": {
         "list-1": {
           "id": "list-1",
-          "title": "List 1",
-          "itemIds": ["l6p0zqww37u55jqz5i5", "1", "l6owkjd08ofy8xbj6t8"]
+          "title": "Todo",
+          "itemIds": [
+            "l74eijlvi6oe5ic2upr",
+            "l74dlunes6inzahzvu8",
+            "l74bwuvruohstzvgu3i"
+          ]
         },
         "list-2": {
           "id": "list-2",
-          "title": "List 2",
-          "itemIds": ["3", "4", "l6owkrtr2hc59874ojm"]
+          "title": "Done",
+          "itemIds": [
+            "6",
+            "l74dllqlsqxfxnpbud",
+            "8"
+          ]
         },
         "list-3": {
           "id": "list-3",
-          "title": "List 3",
-          "itemIds": ["6", "7", "8"]
+          "title": "In Progress",
+          "itemIds": [
+            "3",
+            "4",
+            "l6owkrtr2hc59874ojm"
+          ]
         }
       },
-      "listOrder": ["list-1", "list-2", "list-3"],
+      "listOrder": [
+        "list-1",
+        "list-3",
+        "list-2"
+      ],
       "id": 1
     }
   ]

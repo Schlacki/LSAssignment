@@ -88,7 +88,6 @@ export class Kanban extends React.Component {
   // fetches Data from json-server and sets it as state
   fetch = async () => {
     const response = await axios.get('http://localhost:3004/data/');
-    console.log(response.data[0]);
     this.setState(response.data[0]);
   };
 
@@ -132,7 +131,6 @@ export class Kanban extends React.Component {
 
   // manages the completed Status of an Item (Checkbox checked or not)
   handleChecked = (itemId: string): void => {
-    console.log(itemId);
     const newState: Data = { ...this.state };
     const index = newState.items.findIndex((item) => item.id === itemId);
     if (newState.items[index].completed) {

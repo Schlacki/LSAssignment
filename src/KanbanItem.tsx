@@ -19,6 +19,8 @@ export function KanbanItem(props: {
   handleChecked: (itemId: string) => void;
   setItemContent: (title: string, itemId: string) => void;
 }) {
+
+
   const [title, setTitle] = useState(props.item.content);
 
   // manages deleting the item
@@ -33,7 +35,7 @@ export function KanbanItem(props: {
 
   // manages changing the content of the item
   const onItemContentChange = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
+    // event.preventDefault();
     props.setItemContent(title, props.item.id);
   };
   return (
